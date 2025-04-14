@@ -39,6 +39,13 @@ def run_quiz():
     quiz.add_question(Question('Cuál es la capital de Francia?', ['Londres', 'Berlín', 'París', 'Madrid'], 'París'))
     quiz.add_question(Question('Cuanto es 2 + 2?', ['3', '4', '5', '6'], '4'))
     quiz.add_question(Question('Cuantos huesos tiene el cuerpo humano?', ['206', '205', '204', '203'], '206'))
+    quiz.add_question(Question('Cuanto es 3 * 3?', ['6', '7', '8', '9'], '9'))
+    quiz.add_question(Question('Cuantas letras tiene el abecedario?', ['26', '25', '24', '23'], '26'))
+    quiz.add_question(Question('Cuantos continentes hay en el mundo?', ['5', '6', '7', '8'], '7'))
+    quiz.add_question(Question('Cuantos planetas hay en el sistema solar?', ['7', '8', '9', '10'], '8'))
+    quiz.add_question(Question('Cual es la capital de España?', ['Madrid', 'Barcelona', 'Valencia', 'Sevilla'], 'Madrid'))
+    quiz.add_question(Question('Cuales son los colores de la bandera de España?', ['Rojo y amarillo', 'Rojo y azul', 'Azul y amarillo', 'Verde y amarillo'], 'Rojo y amarillo'))
+    quiz.add_question(Question('Cual es el océano más grande del mundo?', ['Atlántico', 'Índico', 'Ártico', 'Pacífico'], 'Pacífico'))
     
     while quiz.current_question_index < 10:
         question = quiz.get_next_question()
@@ -47,7 +54,14 @@ def run_quiz():
             for idx, option in enumerate(question.options):
                 print(f"{idx + 1}) {option}")
             answer = input("Tu respuesta: ")
+            if quiz.answer_question(question, answer):
+                print("¡Correcto!")
+            else:
+                print("Incorrecto.")
         else:
             break
+
     print("Juego terminado.")
-    print(f"Respuestas correctas: {quiz.correct_answers} / {quiz.correct_answers + quiz.incorrect_answers}")
+    print(f"Preguntas contestadas: {quiz.current_question_index}")
+    print(f"Respuestas correctas: {quiz.correct_answers}")
+    print(f"Respuestas incorrectas: {quiz.incorrect_answers}")
