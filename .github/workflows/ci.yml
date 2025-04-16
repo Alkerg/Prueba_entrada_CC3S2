@@ -17,9 +17,5 @@ jobs:
       - run: pytest
       - name: SonarQube Scan
         uses: sonarsource/sonarcloud-github-action@v1
-        with:
-          organization: Alkerg  
-          projectKey: Alkerg_Prueba_entrada_CC3S2          
-          projectName: Trivia Game Python
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
