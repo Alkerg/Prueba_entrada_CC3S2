@@ -1,3 +1,10 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 class Question:
     def __init__(self, description, options, correct_answer):
         self.description = description
@@ -36,17 +43,11 @@ def run_quiz():
     print("Bienvenido al juego de Trivia!")
     print("Responde las siguientes preguntas seleccionando el número de la opción correcta.")
     quiz = Quiz()
+
     quiz.add_question(Question('Cuál es la capital de Francia?', ['Londres', 'Berlín', 'París', 'Madrid'], 'París'))
     quiz.add_question(Question('Cuanto es 2 + 2?', ['3', '4', '5', '6'], '4'))
     quiz.add_question(Question('Cuantos huesos tiene el cuerpo humano?', ['206', '205', '204', '203'], '206'))
-    quiz.add_question(Question('Cuanto es 3 * 3?', ['6', '7', '8', '9'], '9'))
-    quiz.add_question(Question('Cuantas letras tiene el abecedario?', ['26', '25', '24', '23'], '26'))
-    quiz.add_question(Question('Cuantos continentes hay en el mundo?', ['5', '6', '7', '8'], '7'))
-    quiz.add_question(Question('Cuantos planetas hay en el sistema solar?', ['7', '8', '9', '10'], '8'))
-    quiz.add_question(Question('Cual es la capital de España?', ['Madrid', 'Barcelona', 'Valencia', 'Sevilla'], 'Madrid'))
-    quiz.add_question(Question('Cuales son los colores de la bandera de España?', ['Rojo y amarillo', 'Rojo y azul', 'Azul y amarillo', 'Verde y amarillo'], 'Rojo y amarillo'))
-    quiz.add_question(Question('Cual es el océano más grande del mundo?', ['Atlántico', 'Índico', 'Ártico', 'Pacífico'], 'Pacífico'))
-    
+
     while quiz.current_question_index < 10:
         question = quiz.get_next_question()
         if question:
